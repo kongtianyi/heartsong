@@ -23,3 +23,7 @@ Hope this project can help you.
 有什么问题，欢迎去我的博客留言讨论。
 
 希望这个项目能对你有所帮助
+
+# 10月14日
+
+创建新分支useMongoDB，与mast分支不同的是，此分支将爬取到的数据存入到MongoDB数据库中。
