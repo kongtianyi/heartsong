@@ -27,3 +27,7 @@ Hope this project can help you.
 # 10月14日
 
 创建新分支useMongoDB，与mast分支不同的是，此分支将爬取到的数据存入到MongoDB数据库中。
+
+# 10月15日
+
+创建新分支useCookie，此分支介绍如何配置cookie。
