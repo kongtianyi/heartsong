@@ -24,6 +24,6 @@ Hope this project can help you.
 
 希望这个项目能对你有所帮助
 
-# 10月14日
+# 关于此分支
 
-创建新分支useMongoDB，与mast分支不同的是，此分支将爬取到的数据存入到MongoDB数据库中。
+此分支提供一个转换cookie的函数，并带着cookie以已登录用户的身份请求网站。
