@@ -31,3 +31,7 @@ Hope this project can help you.
 # 10月15日
 
 创建新分支useCookie，此分支介绍如何配置cookie。
+
+# 11月5日
+
+创建新分支reply，此分支介绍如何发起表单请求，在discuz框架中用来回复主题贴，也可用来模拟用户登录。
