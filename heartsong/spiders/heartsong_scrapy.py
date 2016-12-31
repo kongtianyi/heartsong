@@ -80,9 +80,12 @@ class HeartsongSpider(Spider):
             return
         for each in table:
             item = HeartsongItem()  # 实例化一个item
-            # 通过XPath匹配信息，注意extract（）方法返回的是一个list
-            item['author'] = each.xpath('tr[1]/td[@class="pls"]/div[@class="pls favatar"]/div[@class="pi"]/div[@class="authi"]/a/text()').extract()[0]
-            item['post_time'] = each.xpath('tr[1]/td[@class="plc"]/div[@class="pi"]').re(r'[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+:[0-9]+')[0]
+            try:
+                # 通过XPath匹配信息，注意extract（）方法返回的是一个list
+                item['author'] = each.xpath('tr[1]/td[@class="pls"]/div[@class="pls favatar"]/div[@class="pi"]/div[@class="authi"]/a/text()').extract()[0]
+                item['post_time'] = each.xpath('tr[1]/td[@class="plc"]/div[@class="pi"]').re(r'[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+:[0-9]+')[0]
+            except:
+                continue
             # XPath的string(.)用法，解决标签套标签的情况，具体解释请自行找XPath教程
             content_list = each.xpath('.//td[@class="t_f"]').xpath('string(.)').extract()
             content = "".join(content_list)  # 将list转化为string
@@ -123,9 +126,12 @@ class HeartsongSpider(Spider):
         table = selector.xpath('//*[starts-with(@id, "pid")]')  # 取出所有的楼层
         for each in table:
             item = HeartsongItem()  # 实例化一个item
-            # 通过XPath匹配信息，注意extract（）方法返回的是一个list
-            item['author'] = each.xpath('tr[1]/td[@class="pls"]/div[@class="pls favatar"]/div[@class="pi"]/div[@class="authi"]/a/text()').extract()[0]
-            item['post_time'] = each.xpath('tr[1]/td[@class="plc"]/div[@class="pi"]').re(r'[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+:[0-9]+')[0]
+            try:
+                # 通过XPath匹配信息，注意extract（）方法返回的是一个list
+                item['author'] = each.xpath('tr[1]/td[@class="pls"]/div[@class="pls favatar"]/div[@class="pi"]/div[@class="authi"]/a/text()').extract()[0]
+                item['post_time'] = each.xpath('tr[1]/td[@class="plc"]/div[@class="pi"]').re(r'[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+:[0-9]+')[0]
+            except:
+                continue
             content_list = each.xpath('.//td[@class="t_f"]').xpath('string(.)').extract()
             content = "".join(content_list)  # 将list转化为string
             item['url'] = response.url  # 用这种方式获取网页的url
