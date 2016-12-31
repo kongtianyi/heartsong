@@ -80,9 +80,13 @@ class HeartsongSpider(Spider):
             return
         for each in table:
             item = HeartsongItem()  # 实例化一个item
-            # 通过XPath匹配信息，注意extract（）方法返回的是一个list
-            item['author'] = each.xpath('tr[1]/td[@class="pls"]/div[@class="pls favatar"]/div[@class="pi"]/div[@class="authi"]/a/text()').extract()[0]
-            item['post_time'] = each.xpath('tr[1]/td[@class="plc"]/div[@class="pi"]').re(r'[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+:[0-9]+')[0]
+            # 因为后来我在论坛里删除了大量的机器回帖，所以有的楼层里没有作者信息
+            try:
+                # 通过XPath匹配信息，注意extract（）方法返回的是一个list
+                item['author'] = each.xpath('tr[1]/td[@class="pls"]/div[@class="pls favatar"]/div[@class="pi"]/div[@class="authi"]/a/text()').extract()[0]
+                item['post_time'] = each.xpath('tr[1]/td[@class="plc"]/div[@class="pi"]').re(r'[0-9]+-[0-9]+-[0-9]+ [0-9]+:[0-9]+:[0-9]+')[0]
+            except:
+                continue
             # XPath的string(.)用法，解决标签套标签的情况，具体解释请自行找XPath教程
             content_list = each.xpath('.//td[@class="t_f"]').xpath('string(.)').extract()
             content = "".join(content_list)  # 将list转化为string
