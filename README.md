@@ -1,3 +1,5 @@
+> 因阿里云腾讯云加强监管，我个人搭建的供此项目配套练习的论坛不得不停止服务，大家可以参考此项目套用到其它Discuz模板的论坛上。
+
 # Summary
 A simple spider power by scrapy, aimed to crawl forums power by discuz .
 
